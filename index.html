@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>S4 Boutique | Contemporary Designer Ethnic & Festive Pret | MVP Colony, Vizag</title>
-  <meta name="description" content="S4 Boutique on MVP Double Road, beside Kotak Mahindra Bank, Sector 1, MVP Colony, Visakhapatnam. Handcrafted designer sarees, organza florals, and luxury festive wear." />
+  <title>S4 Boutique | 3D Interactive Contemporary Pret & Organza Atelier | MVP Colony, Vizag</title>
+  <meta name="description" content="S4 Boutique on MVP Double Road, beside Kotak Mahindra Bank, Sector 1, MVP Colony, Visakhapatnam. Handcrafted designer organza sarees, festive lehengas, and fusion couture." />
   
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +14,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
   <script>
     tailwind.config = {
@@ -23,12 +24,13 @@
           colors: {
             s4: {
               black: '#08080A',
-              card: '#121217',
+              surface: '#111116',
+              card: '#16161E',
               blush: '#F38BA8',
-              emerald: '#10B981',
               lavender: '#CBA6F7',
               rose: '#F43F5E',
-              gold: '#E5C890'
+              gold: '#E5C890',
+              mint: '#A6E3A1'
             }
           },
           fontFamily: {
@@ -47,18 +49,39 @@
       -webkit-text-fill-color: transparent;
     }
     .glass-mvp {
-      background: rgba(18, 18, 23, 0.78);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(17, 17, 22, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(243, 139, 168, 0.2);
     }
-    .tilt-card {
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-      transform-style: preserve-3d;
+    .card-3d-wrap {
+      perspective: 1000px;
     }
-    .tilt-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 45px -10px rgba(243, 139, 168, 0.22);
+    .card-3d {
+      transition: transform 0.25s ease-out, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .card-glare {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 0%, rgba(243,139,168,0.22), transparent 65%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .card-3d:hover .card-glare {
+      opacity: 1;
+    }
+    .zoom-container {
+      overflow: hidden;
+      position: relative;
+    }
+    .zoom-img {
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .zoom-container:hover .zoom-img {
+      transform: scale(1.08);
     }
   </style>
 </head>
@@ -71,39 +94,40 @@
       <span class="font-bold text-white tracking-wide">Designed & Powered by <a href="https://hiveclicks.com/" target="_blank" class="text-pink-400 underline hover:text-pink-300">HiveClicks</a></span>
     </div>
     <span class="hidden md:inline text-slate-500">•</span>
-    <span class="text-slate-400">Interactive Storefront Concept for <strong>S4 Boutique (MVP Colony, Vizag)</strong></span>
-    <a href="https://hiveclicks.com/" target="_blank" class="inline-flex items-center space-x-1 bg-pink-500 hover:bg-pink-400 text-slate-950 px-2.5 py-0.5 rounded-full font-bold text-[11px] transition">
+    <span class="text-slate-400">3D Interactive Storefront for <strong>S4 Boutique (MVP Colony, Vizag)</strong></span>
+    <a href="https://hiveclicks.com/" target="_blank" class="inline-flex items-center space-x-1 bg-pink-500 hover:bg-pink-400 text-slate-950 px-2.5 py-0.5 rounded-full font-bold text-[11px] transition shadow-lg shadow-pink-500/20">
       <span>Visit HiveClicks.com</span>
       <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
     </a>
   </div>
 
-  <!-- PERFECT LUXURY HEADER -->
+  <!-- LUXURY MVP HEADER -->
   <header class="sticky top-10 z-50 glass-mvp border-b border-s4-blush/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <a href="index.html" class="flex items-center space-x-3 group">
-        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-s4-blush to-s4-lavender flex items-center justify-center text-slate-950 font-chic font-bold text-2xl shadow-lg shadow-s4-blush/20 group-hover:scale-105 transition">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-s4-blush via-s4-lavender to-s4-gold flex items-center justify-center text-slate-950 font-chic font-bold text-2xl shadow-lg shadow-s4-blush/20 group-hover:scale-105 transition">
           S4
         </div>
         <div>
           <span class="font-chic text-2xl sm:text-3xl font-bold tracking-wider text-white block">S4<span class="text-s4-blush"> BOUTIQUE</span></span>
-          <span class="text-[9px] uppercase tracking-[0.25em] text-slate-400 font-semibold block">MVP Double Rd • Sector 1</span>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-slate-400 font-semibold block">MVP Double Rd • Sector 1, Vizag</span>
         </div>
       </a>
 
       <nav class="hidden md:flex items-center space-x-8 text-xs uppercase tracking-widest font-semibold text-slate-300">
-        <a href="index.html" class="text-s4-blush border-b-2 border-s4-blush pb-1">Home</a>
+        <a href="index.html" class="text-s4-blush border-b-2 border-s4-blush pb-1">3D Atelier</a>
         <a href="catalog.html" class="hover:text-s4-blush transition">Full Catalogue</a>
         <a href="#studio" class="hover:text-s4-blush transition">MVP Colony Studio</a>
         <a href="#reviews" class="hover:text-s4-blush transition">Reviews</a>
       </nav>
 
       <div class="flex items-center space-x-4">
-        <button id="currency-toggle" class="text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-s4-blush hover:border-s4-blush transition">
+        <button id="currency-toggle" class="text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-s4-blush hover:border-s4-blush transition flex items-center space-x-1.5">
+          <i data-lucide="globe" class="w-3.5 h-3.5"></i>
           <span id="current-currency">INR (₹)</span>
         </button>
-        <button id="cart-btn" class="relative p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white">
+        <button id="cart-btn" class="relative p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white hover:border-s4-blush transition">
           <i data-lucide="shopping-bag" class="w-5 h-5 text-s4-blush"></i>
           <span id="cart-count-badge" class="absolute -top-1.5 -right-1.5 bg-s4-blush text-slate-950 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span>
         </button>
@@ -115,235 +139,326 @@
     </div>
   </header>
 
-  <!-- 3D INTERACTIVE CRYSTAL PRISM HERO -->
-  <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-24">
-    <div id="three-crystal-container" class="absolute inset-0 w-full h-full pointer-events-none z-0"></div>
+  <!-- 3D INTERACTIVE HAUTE COUTURE HERO SECTION -->
+  <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden py-16">
+    <div id="three-viewport" class="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing z-0"></div>
 
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+    <!-- Vignette & Glow Overlay -->
+    <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-s4-black/60 via-transparent to-s4-black/95 z-0"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pointer-events-none">
       
-      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-mvp border border-s4-blush/30 text-xs text-s4-blush font-medium mb-6">
-        <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
-        <span>MVP Double Rd, Beside Kotak Mahindra Bank, Sector 1, Vizag</span>
+      <!-- Left Content -->
+      <div class="lg:col-span-6 space-y-6 pointer-events-auto">
+        <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-mvp border border-s4-blush/40 text-xs text-s4-blush font-semibold shadow-lg">
+          <span class="w-2 h-2 rounded-full bg-s4-blush animate-pulse"></span>
+          <span>MVP Colony Double Road • Beside Kotak Mahindra Bank</span>
+        </div>
+
+        <h1 class="font-chic text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
+          Contemporary Pret & <br>
+          <span class="chic-gradient">Organza Designer Silhouettes</span>
+        </h1>
+
+        <p class="text-slate-300 text-sm sm:text-base font-light leading-relaxed max-w-xl">
+          Experience Visakhapatnam’s most curated designer boutique. Handpainted sheer organzas, delicate gota lehengas, and tiered festive anarkalis rendered on an interactive 3D digital mannequin.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="catalog.html" class="inline-flex items-center space-x-3 bg-gradient-to-r from-s4-blush via-s4-lavender to-s4-gold hover:from-s4-gold hover:to-s4-blush text-slate-950 font-bold px-8 py-4 rounded-full text-xs uppercase tracking-widest shadow-2xl shadow-s4-blush/30 transition transform hover:-translate-y-1">
+            <span>Explore Full Catalogue</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#studio" class="inline-flex items-center space-x-2 glass-mvp hover:bg-slate-800 text-slate-200 border border-s4-blush/40 font-semibold px-7 py-4 rounded-full text-xs uppercase tracking-widest transition">
+            <i data-lucide="map-pin" class="w-4 h-4 text-s4-blush"></i>
+            <span>Visit MVP Studio</span>
+          </a>
+        </div>
+
+        <!-- 3D Hint -->
+        <div class="flex items-center space-x-3 text-xs text-slate-400 pt-4">
+          <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full bg-slate-900/80 border border-slate-800">
+            <i data-lucide="mouse-pointer-click" class="w-3.5 h-3.5 text-s4-blush animate-bounce"></i>
+            <span class="font-medium text-slate-300">Drag 360° to rotate 3D mannequin</span>
+          </div>
+          <span>•</span>
+          <span>Scroll to zoom</span>
+        </div>
       </div>
 
-      <h1 class="font-chic text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
-        Modern Festive Elegance & <br class="hidden sm:inline">
-        <span class="chic-gradient">Contemporary Designer Silhouettes</span>
-      </h1>
+      <!-- Right 3D Controls Overlay -->
+      <div class="lg:col-span-6 flex flex-col items-end justify-center space-y-4 pointer-events-auto">
+        
+        <!-- Swatch Switcher Card -->
+        <div class="glass-mvp p-5 rounded-3xl border border-s4-blush/30 shadow-2xl max-w-xs w-full">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-s4-blush">3D Fabric Palette</span>
+            <span class="text-[10px] text-slate-400" id="palette-label">Blush Peony</span>
+          </div>
+          
+          <div class="grid grid-cols-4 gap-2 mb-4">
+            <button onclick="setMannequinColor(0xF38BA8, 'Blush Peony Organza')" class="swatch-btn active h-10 rounded-xl bg-[#F38BA8] ring-2 ring-white ring-offset-2 ring-offset-slate-950 transition hover:scale-105" title="Blush Peony"></button>
+            <button onclick="setMannequinColor(0xE5C890, 'Champagne Gold Raw Silk')" class="swatch-btn h-10 rounded-xl bg-[#E5C890] transition hover:scale-105 ring-offset-2 ring-offset-slate-950" title="Champagne Gold"></button>
+            <button onclick="setMannequinColor(0xCBA6F7, 'Royal Lavender Georgette')" class="swatch-btn h-10 rounded-xl bg-[#CBA6F7] transition hover:scale-105 ring-offset-2 ring-offset-slate-950" title="Royal Lavender"></button>
+            <button onclick="setMannequinColor(0xA6E3A1, 'Mint Sage Chanderi')" class="swatch-btn h-10 rounded-xl bg-[#A6E3A1] transition hover:scale-105 ring-offset-2 ring-offset-slate-950" title="Mint Sage"></button>
+          </div>
 
-      <p class="max-w-2xl mx-auto text-slate-300 text-sm sm:text-base font-light leading-relaxed mb-10">
-        MVP Colony’s premier boutique for organza handpainted florals, light bridal lehengas, fusion ready-to-wear kurtis, and bespoke event styling.
-      </p>
+          <div class="flex items-center justify-between pt-3 border-t border-white/10 text-xs">
+            <button id="toggle-spin" class="flex items-center space-x-1.5 text-slate-300 hover:text-white transition">
+              <i data-lucide="pause" class="w-3.5 h-3.5 text-s4-blush" id="spin-icon"></i>
+              <span id="spin-text">Pause Spin</span>
+            </button>
+            <button id="reset-cam" class="flex items-center space-x-1.5 text-slate-300 hover:text-white transition">
+              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5 text-s4-lavender"></i>
+              <span>Reset Cam</span>
+            </button>
+          </div>
+        </div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
-        <a href="catalog.html" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-s4-blush to-s4-lavender text-slate-950 font-bold px-8 py-4 rounded-full text-xs uppercase tracking-widest shadow-2xl shadow-s4-blush/25 transition transform hover:-translate-y-1">
-          <span>Explore Full Catalogue</span>
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
-        <a href="#studio" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 glass-mvp hover:bg-slate-800 text-slate-200 border border-s4-blush/40 font-semibold px-8 py-4 rounded-full text-xs uppercase tracking-widest transition">
-          <i data-lucide="map-pin" class="w-4 h-4 text-s4-blush"></i>
-          <span>Visit MVP Studio</span>
-        </a>
-      </div>
+        <!-- Boutique Trust Badge -->
+        <div class="glass-mvp p-3.5 rounded-2xl flex items-center space-x-3 text-xs text-slate-300">
+          <div class="p-2 rounded-xl bg-s4-blush/20 text-s4-blush">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <p class="font-bold text-white">4.9 ★ Rating in MVP Colony</p>
+            <p class="text-[10px] text-slate-400">Custom fitting & Worldwide Courier</p>
+          </div>
+        </div>
 
-      <!-- Highlights Bar -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-20 pt-8 border-t border-white/10 text-center">
-        <div>
-          <p class="font-chic text-3xl font-bold text-s4-blush">MVP</p>
-          <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">Prime Double Road</p>
-        </div>
-        <div>
-          <p class="font-chic text-3xl font-bold text-white">Handpainted</p>
-          <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">Pure Organza Silks</p>
-        </div>
-        <div>
-          <p class="font-chic text-3xl font-bold text-s4-lavender">Bespoke</p>
-          <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">Custom Alterations</p>
-        </div>
-        <div>
-          <p class="font-chic text-3xl font-bold text-white">Global</p>
-          <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">NRI Express Delivery</p>
-        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- HOME CATALOGUE PREVIEW & SEE MORE BUTTON -->
-  <section class="py-24 relative bg-s4-card/50 border-y border-white/5">
+  <!-- HOME CATALOGUE PREVIEW & INTERACTIVE 3D CARDS -->
+  <section class="py-24 relative bg-s4-surface border-y border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
         <div>
-          <span class="text-s4-blush uppercase tracking-widest text-xs font-bold block mb-2">Curated Edit</span>
+          <span class="text-s4-blush uppercase tracking-widest text-xs font-bold block mb-2">Signature Pret Edit</span>
           <h2 class="font-chic text-3xl sm:text-5xl font-bold text-white">The MVP Collection</h2>
         </div>
         <a href="catalog.html" class="inline-flex items-center space-x-2 text-s4-blush hover:text-white font-bold text-xs uppercase tracking-wider mt-4 md:mt-0 transition group">
-          <span>View All 12+ Designs</span>
+          <span>View All 12+ Designs in Catalog</span>
           <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
         </a>
       </div>
 
+      <!-- 4 FEATURED 3D CARDS -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         
-        <!-- Item 1 -->
-        <div class="tilt-card group bg-s4-card rounded-2xl border border-white/10 overflow-hidden flex flex-col">
-          <div class="relative h-96 overflow-hidden bg-slate-900">
-            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" alt="Pastel Peony Handpainted Organza Saree" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-            <span class="absolute top-3 left-3 bg-s4-blush text-slate-950 text-[10px] font-bold uppercase px-2.5 py-1 rounded-md tracking-wider">Handpainted</span>
-          </div>
-          <div class="p-5 flex-1 flex flex-col justify-between">
-            <div>
-              <p class="text-[10px] text-s4-blush uppercase tracking-widest font-semibold mb-1">Pure Sheer Silk Organza</p>
-              <h3 class="font-chic text-lg font-bold text-white group-hover:text-s4-blush transition">Pastel Peony Organza Saree</h3>
-              <p class="text-xs text-slate-400 mt-1 line-clamp-2">Botanical brushstroke floral motifs with delicate hand-embroidered cutdana scallop borders.</p>
-            </div>
-            <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
-              <span class="text-base font-bold text-s4-blush price-tag" data-inr="16500" data-usd="200">₹16,500</span>
-              <button onclick="addToCart(1)" class="bg-s4-blush hover:bg-white text-slate-950 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1 shadow-md">
-                <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
-                <span>Add</span>
+        <!-- Product 1 -->
+        <div class="card-3d-wrap">
+          <div class="card-3d group bg-s4-card rounded-2xl border border-white/10 overflow-hidden flex flex-col relative shadow-xl">
+            <div class="card-glare"></div>
+            <div class="zoom-container relative h-96 bg-slate-950 cursor-pointer" onclick="openQuickView(1)">
+              <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" alt="Pastel Peony Handpainted Organza Saree" class="zoom-img w-full h-full object-cover">
+              <span class="absolute top-3 left-3 bg-s4-blush text-slate-950 text-[10px] font-bold uppercase px-2.5 py-1 rounded-md tracking-wider">Handpainted</span>
+              <button class="absolute bottom-3 right-3 p-2 rounded-full glass-mvp text-white hover:text-s4-blush transition" onclick="event.stopPropagation(); openQuickView(1)">
+                <i data-lucide="maximize-2" class="w-4 h-4"></i>
               </button>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <p class="text-[10px] text-s4-blush uppercase tracking-widest font-semibold mb-1">Pure Sheer Silk Organza</p>
+                <h3 class="font-chic text-lg font-bold text-white group-hover:text-s4-blush transition">Pastel Peony Organza Saree</h3>
+                <p class="text-xs text-slate-400 mt-1 line-clamp-2">Botanical brushstroke floral motifs with delicate hand-embroidered cutdana scallop borders.</p>
+              </div>
+              <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+                <span class="text-base font-bold text-s4-blush price-tag" data-inr="16500" data-usd="200">₹16,500</span>
+                <button onclick="addToCart(1)" class="bg-s4-blush hover:bg-white text-slate-950 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1 shadow-md">
+                  <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+                  <span>Add to Bag</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Item 2 -->
-        <div class="tilt-card group bg-s4-card rounded-2xl border border-white/10 overflow-hidden flex flex-col">
-          <div class="relative h-96 overflow-hidden bg-slate-900">
-            <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=800&q=80" alt="Champagne Raw Silk Festive Lehenga" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-            <span class="absolute top-3 left-3 bg-amber-500 text-slate-950 text-[10px] font-bold uppercase px-2.5 py-1 rounded-md tracking-wider">Festive Luxe</span>
-          </div>
-          <div class="p-5 flex-1 flex flex-col justify-between">
-            <div>
-              <p class="text-[10px] text-amber-400 uppercase tracking-widest font-semibold mb-1">Muted Gold Gota Work</p>
-              <h3 class="font-chic text-lg font-bold text-white group-hover:text-amber-400 transition">Champagne Raw Silk Lehenga</h3>
-              <p class="text-xs text-slate-400 mt-1 line-clamp-2">Flared lehenga skirt with rose gold geometric gota borders and padded sweetheart blouse.</p>
-            </div>
-            <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
-              <span class="text-base font-bold text-white price-tag" data-inr="32000" data-usd="385">₹32,000</span>
-              <button onclick="addToCart(2)" class="bg-s4-blush hover:bg-white text-slate-950 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1 shadow-md">
-                <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
-                <span>Add</span>
+        <!-- Product 2 -->
+        <div class="card-3d-wrap">
+          <div class="card-3d group bg-s4-card rounded-2xl border border-white/10 overflow-hidden flex flex-col relative shadow-xl">
+            <div class="card-glare"></div>
+            <div class="zoom-container relative h-96 bg-slate-950 cursor-pointer" onclick="openQuickView(2)">
+              <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=800&q=80" alt="Champagne Raw Silk Festive Lehenga" class="zoom-img w-full h-full object-cover">
+              <span class="absolute top-3 left-3 bg-amber-500 text-slate-950 text-[10px] font-bold uppercase px-2.5 py-1 rounded-md tracking-wider">Festive Luxe</span>
+              <button class="absolute bottom-3 right-3 p-2 rounded-full glass-mvp text-white hover:text-amber-400 transition" onclick="event.stopPropagation(); openQuickView(2)">
+                <i data-lucide="maximize-2" class="w-4 h-4"></i>
               </button>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <p class="text-[10px] text-amber-400 uppercase tracking-widest font-semibold mb-1">Muted Gold Gota Work</p>
+                <h3 class="font-chic text-lg font-bold text-white group-hover:text-amber-400 transition">Champagne Raw Silk Lehenga</h3>
+                <p class="text-xs text-slate-400 mt-1 line-clamp-2">Flared lehenga skirt with rose gold geometric gota borders and padded sweetheart blouse.</p>
+              </div>
+              <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+                <span class="text-base font-bold text-white price-tag" data-inr="32000" data-usd="385">₹32,000</span>
+                <button onclick="addToCart(2)" class="bg-s4-blush hover:bg-white text-slate-950 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1 shadow-md">
+                  <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+                  <span>Add to Bag</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Item 3 -->
-        <div class="tilt-card group bg-s4-card rounded-2xl border border-white/10 overflow-hidden flex flex-col">
-          <div class="relative h-96 overflow-hidden bg-slate-900">
-            <img src="https://images.unsplash.com/photo-1596783074918-c84cb06531ca?auto=format&fit=crop&w=800&q=80" alt="Lavender Georgette Tiered Anarkali" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-            <span class="absolute top-3 left-3 bg-s4-lavender text-slate-950 text-[10px] font-bold uppercase px-2.5 py-1 rounded-md tracking-wider">Flared Silhouette</span>
-          </div>
-          <div class="p-5 flex-1 flex flex-col justify-between">
-            <div>
-              <p class="text-[10px] text-s4-lavender uppercase tracking-widest font-semibold mb-1">Tiered Flare</p>
-              <h3 class="font-chic text-lg font-bold text-white group-hover:text-s4-lavender transition">Lavender Tiered Anarkali Set</h3>
-              <p class="text-xs text-slate-400 mt-1 line-clamp-2">Flowing silhouette with subtle mirror accents, organza dupatta, and matching cigarette pants.</p>
-            </div>
-            <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
-              <span class="text-base font-bold text-s4-lavender price-tag" data-inr="18500" data-usd="225">₹18,500</span>
-              <button onclick="addToCart(3)" class="bg-s4-blush hover:bg-white text-slate-950 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1 shadow-md">
-                <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
-                <span>Add</span>
+        <!-- Product 3 -->
+        <div class="card-3d-wrap">
+          <div class="card-3d group bg-s4-card rounded-2xl border border-white/10 overflow-hidden flex flex-col relative shadow-xl">
+            <div class="card-glare"></div>
+            <div class="zoom-container relative h-96 bg-slate-950 cursor-pointer" onclick="openQuickView(3)">
+              <img src="https://images.unsplash.com/photo-1596783074918-c84cb06531ca?auto=format&fit=crop&w=800&q=80" alt="Lavender Georgette Tiered Anarkali" class="zoom-img w-full h-full object-cover">
+              <span class="absolute top-3 left-3 bg-s4-lavender text-slate-950 text-[10px] font-bold uppercase px-2.5 py-1 rounded-md tracking-wider">Flared Silhouette</span>
+              <button class="absolute bottom-3 right-3 p-2 rounded-full glass-mvp text-white hover:text-s4-lavender transition" onclick="event.stopPropagation(); openQuickView(3)">
+                <i data-lucide="maximize-2" class="w-4 h-4"></i>
               </button>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <p class="text-[10px] text-s4-lavender uppercase tracking-widest font-semibold mb-1">Georgette Flare</p>
+                <h3 class="font-chic text-lg font-bold text-white group-hover:text-s4-lavender transition">Lavender Tiered Anarkali Set</h3>
+                <p class="text-xs text-slate-400 mt-1 line-clamp-2">Floor-grazing kalidar silhouette with mirror work belt and featherweight chiffon dupatta.</p>
+              </div>
+              <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+                <span class="text-base font-bold text-s4-lavender price-tag" data-inr="18500" data-usd="225">₹18,500</span>
+                <button onclick="addToCart(3)" class="bg-s4-blush hover:bg-white text-slate-950 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1 shadow-md">
+                  <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+                  <span>Add to Bag</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Item 4 -->
-        <div class="tilt-card group bg-s4-card rounded-2xl border border-white/10 overflow-hidden flex flex-col">
-          <div class="relative h-96 overflow-hidden bg-slate-900">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Turquoise Printed Chanderi Kurta Set" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-            <span class="absolute top-3 left-3 bg-teal-500 text-slate-950 text-[10px] font-bold uppercase px-2.5 py-1 rounded-md tracking-wider">Ready To Wear</span>
-          </div>
-          <div class="p-5 flex-1 flex flex-col justify-between">
-            <div>
-              <p class="text-[10px] text-teal-400 uppercase tracking-widest font-semibold mb-1">Chanderi Silk</p>
-              <h3 class="font-chic text-lg font-bold text-white group-hover:text-teal-400 transition">Turquoise Foil Chanderi Suit</h3>
-              <p class="text-xs text-slate-400 mt-1 line-clamp-2">Straight-cut designer kurta with handcrafted thread buttons and scallop culottes.</p>
-            </div>
-            <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
-              <span class="text-base font-bold text-teal-400 price-tag" data-inr="12800" data-usd="155">₹12,800</span>
-              <button onclick="addToCart(4)" class="bg-s4-blush hover:bg-white text-slate-950 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1 shadow-md">
-                <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
-                <span>Add</span>
+        <!-- Product 4 -->
+        <div class="card-3d-wrap">
+          <div class="card-3d group bg-s4-card rounded-2xl border border-white/10 overflow-hidden flex flex-col relative shadow-xl">
+            <div class="card-glare"></div>
+            <div class="zoom-container relative h-96 bg-slate-950 cursor-pointer" onclick="openQuickView(4)">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Turquoise Foil Printed Chanderi Suit" class="zoom-img w-full h-full object-cover">
+              <span class="absolute top-3 left-3 bg-emerald-500 text-slate-950 text-[10px] font-bold uppercase px-2.5 py-1 rounded-md tracking-wider">Party Pret</span>
+              <button class="absolute bottom-3 right-3 p-2 rounded-full glass-mvp text-white hover:text-emerald-400 transition" onclick="event.stopPropagation(); openQuickView(4)">
+                <i data-lucide="maximize-2" class="w-4 h-4"></i>
               </button>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <p class="text-[10px] text-emerald-400 uppercase tracking-widest font-semibold mb-1">Contemporary Chanderi</p>
+                <h3 class="font-chic text-lg font-bold text-white group-hover:text-emerald-400 transition">Turquoise Foil Chanderi Suit</h3>
+                <p class="text-xs text-slate-400 mt-1 line-clamp-2">Straight cut kurta paired with scalloped pants and gold foil handblock printed organza wrap.</p>
+              </div>
+              <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+                <span class="text-base font-bold text-white price-tag" data-inr="12800" data-usd="155">₹12,800</span>
+                <button onclick="addToCart(4)" class="bg-s4-blush hover:bg-white text-slate-950 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1 shadow-md">
+                  <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+                  <span>Add to Bag</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
       </div>
 
-      <!-- SEE MORE BUTTON REDIRECTING TO FULL CATALOGUE -->
+      <!-- PROMINENT SEE MORE BUTTON REDIRECT -->
       <div class="mt-14 text-center">
-        <a href="catalog.html" class="inline-flex items-center space-x-3 bg-gradient-to-r from-s4-blush via-s4-lavender to-s4-gold text-slate-950 font-bold px-10 py-4 rounded-full text-xs uppercase tracking-widest shadow-2xl shadow-s4-blush/25 transition transform hover:-translate-y-1 group">
-          <span>See More / View Complete Catalogue (12+ Designs)</span>
+        <a href="catalog.html" class="inline-flex items-center space-x-3 bg-gradient-to-r from-s4-blush via-s4-lavender to-s4-gold hover:from-s4-gold hover:to-s4-blush text-slate-950 font-bold px-10 py-4 rounded-full text-xs uppercase tracking-widest shadow-2xl shadow-s4-blush/30 transition transform hover:-translate-y-1 group">
+          <span>Explore Complete Catalogue (12+ Designs)</span>
           <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
         </a>
-        <p class="text-xs text-slate-400 mt-2">Organza Florals • Raw Silk Lehengas • Tiered Anarkalis • Ready-To-Wear Kurtis</p>
+        <p class="text-xs text-slate-400 mt-2">Organza Sarees • Raw Silk Lehengas • Georgette Anarkalis • Ready-to-Wear Suits</p>
       </div>
 
     </div>
   </section>
 
-  <!-- STUDIO LOCATION (MVP COLONY, SECTOR 1) -->
+  <!-- STUDIO LOCATION & HIGHLIGHTS -->
   <section id="studio" class="py-20 bg-s4-black border-t border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
       
       <div class="lg:col-span-5 space-y-6">
-        <span class="text-s4-blush uppercase tracking-widest text-xs font-bold">Studio Visit</span>
-        <h2 class="font-chic text-3xl sm:text-4xl font-bold text-white">S4 Boutique MVP Colony</h2>
+        <span class="text-s4-blush uppercase tracking-widest text-xs font-bold">Visit Our MVP Studio</span>
+        <h2 class="font-chic text-3xl sm:text-4xl font-bold text-white">S4 Boutique</h2>
         <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-          Situated on MVP Double Road right beside Kotak Mahindra Bank in Sector 1. Visit us for ready-to-wear trials and custom tailoring.
+          Located prominently on MVP Double Road right beside Kotak Mahindra Bank in Sector 1. Visit us for private styling trials, personalized color consultations, and custom fitting services.
         </p>
 
         <div class="space-y-4 text-xs text-slate-300">
           <div class="flex items-start space-x-3">
             <i data-lucide="map-pin" class="w-5 h-5 text-s4-blush mt-0.5"></i>
             <div>
-              <p class="font-bold text-white">Location</p>
-              <p class="text-slate-400">1-83-41, MVP Double Rd, beside Kotak Mahindra Bank, Sector 1, MVP Colony, Visakhapatnam 530017</p>
+              <p class="font-bold text-white">Address</p>
+              <p class="text-slate-400">MVP Double Rd, Beside Kotak Mahindra Bank, Sector 1, MVP Colony, Visakhapatnam, Andhra Pradesh 530017</p>
             </div>
           </div>
           <div class="flex items-start space-x-3">
             <i data-lucide="clock" class="w-5 h-5 text-s4-blush mt-0.5"></i>
             <div>
-              <p class="font-bold text-white">Hours</p>
-              <p class="text-slate-400">Monday - Saturday: 10:30 AM - 9:00 PM</p>
+              <p class="font-bold text-white">Working Hours</p>
+              <p class="text-slate-400">Monday - Saturday: 10:30 AM - 9:00 PM | Sunday: 11:00 AM - 8:00 PM</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <i data-lucide="phone" class="w-5 h-5 text-s4-blush mt-0.5"></i>
+            <div>
+              <p class="font-bold text-white">Styling Hotline</p>
+              <p class="text-slate-400">+91 891 278 4499 / Direct WhatsApp</p>
             </div>
           </div>
         </div>
-
-        <div class="pt-2">
-          <a href="https://maps.app.goo.gl/RYBpauDQCer4goyc6?g_st=ac" target="_blank" class="inline-flex items-center space-x-2 bg-slate-900 border border-s4-blush/40 text-s4-blush px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition hover:bg-slate-800">
-            <i data-lucide="navigation" class="w-4 h-4"></i>
-            <span>Open in Google Maps</span>
-          </a>
-        </div>
       </div>
 
-      <div class="lg:col-span-7 bg-s4-card p-3 rounded-2xl border border-white/10 shadow-2xl">
-        <div class="w-full h-80 rounded-xl overflow-hidden">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3799.6!2d83.330!3d17.740!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39434d2756169b%3A0x47f4be2aed933988!2sS4%20Boutique!5e0!3m2!1sen!2sin!4v1700000000000" 
-            width="100%" 
-            height="100%" 
-            style="border:0; filter: invert(90%) hue-rotate(180deg);" 
-            allowfullscreen="" 
-            loading="lazy">
-          </iframe>
-        </div>
+      <div class="lg:col-span-7 rounded-3xl overflow-hidden border border-white/10 glass-mvp p-4 shadow-2xl">
+        <iframe 
+          title="S4 Boutique MVP Colony Map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3799.824241088611!2d83.33649697593674!3d17.747942692209703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a395b058a5e7807%3A0xc39f8f4ca642c130!2sS4%20Boutique!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+          width="100%" 
+          height="340" 
+          style="border:0; border-radius: 1.25rem;" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
       </div>
 
     </div>
   </section>
 
+  <!-- QUICK VIEW MODAL -->
+  <div id="quickview-modal" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition duration-300 flex items-center justify-center p-4">
+    <div id="quickview-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+    <div class="relative z-10 max-w-2xl w-full bg-s4-card border border-white/20 rounded-3xl p-6 shadow-2xl flex flex-col sm:flex-row gap-6">
+      <img id="qv-img" src="" class="w-full sm:w-1/2 h-80 object-cover rounded-2xl">
+      <div class="flex-1 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between">
+            <span id="qv-tag" class="text-[10px] font-bold uppercase tracking-wider text-s4-blush"></span>
+            <button onclick="closeQuickView()" class="text-slate-400 hover:text-white p-1">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+          <h3 id="qv-title" class="font-chic text-2xl font-bold text-white mt-2"></h3>
+          <p id="qv-desc" class="text-xs text-slate-300 mt-2 leading-relaxed"></p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+          <span id="qv-price" class="text-xl font-bold text-s4-blush"></span>
+          <button id="qv-add-btn" class="bg-s4-blush hover:bg-white text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs transition">
+            Add to Bag
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
-  <footer class="bg-s4-card border-t border-white/10 py-12 text-slate-400 text-xs mt-auto">
+  <footer class="bg-s4-surface border-t border-white/10 py-12 text-slate-400 text-xs mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p>&copy; <span id="year"></span> S4 Boutique. MVP Colony, Visakhapatnam.</p>
+      <p>&copy; <span id="year">2026</span> S4 Boutique. MVP Double Road, Sector 1, Visakhapatnam.</p>
+      
+      <!-- HIVECLICKS MANDATORY FOOTER -->
       <p class="flex items-center space-x-1.5">
         <img src="hiveclicks-logo.png" alt="HiveClicks Logo" class="h-4 w-auto object-contain rounded bg-white/10 p-0.5">
         <span>Engineered & Marketed by</span>
@@ -361,7 +476,7 @@
     </a>
   </div>
 
-  <!-- SLIDE-OVER CART DRAWER -->
+  <!-- SLIDE-OVER BAG DRAWER -->
   <div id="cart-drawer" class="fixed inset-0 z-50 pointer-events-none transition duration-500 opacity-0">
     <div id="cart-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition"></div>
     <div class="absolute top-0 right-0 h-full w-full max-w-md bg-s4-card border-l border-s4-blush/30 p-6 flex flex-col justify-between shadow-2xl transform translate-x-full transition duration-500 pointer-events-auto" id="cart-panel">
@@ -369,7 +484,7 @@
         <div class="flex items-center justify-between pb-4 border-b border-white/10">
           <div class="flex items-center space-x-2">
             <i data-lucide="shopping-bag" class="w-5 h-5 text-s4-blush"></i>
-            <h3 class="font-chic text-lg font-bold text-white">Your Selections</h3>
+            <h3 class="font-chic text-xl font-bold text-white">Your Selections</h3>
           </div>
           <button id="close-cart-btn" class="p-2 text-slate-400 hover:text-white transition">
             <i data-lucide="x" class="w-5 h-5"></i>
@@ -390,54 +505,249 @@
     </div>
   </div>
 
+  <!-- THREE.JS & SCRIPT -->
   <script>
     lucide.createIcons();
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // THREE.JS 3D CRYSTAL PRISM PARTICLES
-    const container = document.getElementById('three-crystal-container');
+    // -------------------------------------------------------------
+    // THREE.JS 3D HAUTE COUTURE MANNEQUIN & ROSE-GOLD TURNTABLE
+    // -------------------------------------------------------------
+    const viewport = document.getElementById('three-viewport');
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    container.appendChild(renderer.domElement);
+    viewport.appendChild(renderer.domElement);
 
-    const geo = new THREE.OctahedronGeometry(11, 2);
-    const mat = new THREE.MeshBasicMaterial({ color: 0xf38ba8, wireframe: true, transparent: true, opacity: 0.16 });
-    const mesh = new THREE.Mesh(geo, mat);
-    scene.add(mesh);
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 1.3;
+    controls.maxPolarAngle = Math.PI / 2 + 0.1;
+    controls.minDistance = 10;
+    controls.maxDistance = 32;
 
+    camera.position.set(0, 3, 22);
+    controls.target.set(0, 0, 0);
+
+    // Marble Turntable Base
+    const turntableGeo = new THREE.CylinderGeometry(5.5, 6, 0.5, 48);
+    const turntableMat = new THREE.MeshStandardMaterial({ color: 0x111116, roughness: 0.25, metalness: 0.85 });
+    const turntable = new THREE.Mesh(turntableGeo, turntableMat);
+    turntable.position.y = -5.2;
+    scene.add(turntable);
+
+    // Rose-Gold Accent Ring
+    const roseRingGeo = new THREE.TorusGeometry(5.7, 0.09, 16, 48);
+    const roseRingMat = new THREE.MeshBasicMaterial({ color: 0xF38BA8 });
+    const roseRing = new THREE.Mesh(roseRingGeo, roseRingMat);
+    roseRing.rotation.x = Math.PI / 2;
+    roseRing.position.y = -4.9;
+    scene.add(roseRing);
+
+    // Sculpted Contemporary Designer Dress Group
+    const gownGroup = new THREE.Group();
+    let gownMat = new THREE.MeshStandardMaterial({ color: 0xF38BA8, roughness: 0.35, metalness: 0.45 });
+    let sheerMat = new THREE.MeshStandardMaterial({ color: 0xF38BA8, roughness: 0.2, metalness: 0.3, transparent: true, opacity: 0.85 });
+
+    // 1. Mannequin Torso / Bodice
+    const torsoGeo = new THREE.CylinderGeometry(1.2, 0.95, 3.2, 32);
+    const torso = new THREE.Mesh(torsoGeo, gownMat);
+    torso.position.y = 1.0;
+    gownGroup.add(torso);
+
+    // 2. Slender Neck & Choker
+    const neckGeo = new THREE.CylinderGeometry(0.48, 0.55, 1.3, 24);
+    const goldMat = new THREE.MeshStandardMaterial({ color: 0xE5C890, metalness: 0.9, roughness: 0.2 });
+    const neck = new THREE.Mesh(neckGeo, goldMat);
+    neck.position.y = 3.2;
+    gownGroup.add(neck);
+
+    const chokerGeo = new THREE.TorusGeometry(0.56, 0.08, 16, 32);
+    const choker = new THREE.Mesh(chokerGeo, goldMat);
+    choker.rotation.x = Math.PI / 2;
+    choker.position.y = 2.9;
+    gownGroup.add(choker);
+
+    // 3. Layered Flared Organza Skirt (Multi-tier cones)
+    const skirtTier1 = new THREE.CylinderGeometry(0.95, 2.3, 2.6, 32, 1, true);
+    const skirt1 = new THREE.Mesh(skirtTier1, gownMat);
+    skirt1.position.y = -1.5;
+    gownGroup.add(skirt1);
+
+    const skirtTier2 = new THREE.CylinderGeometry(2.1, 4.4, 3.6, 32, 1, true);
+    const skirt2 = new THREE.Mesh(skirtTier2, sheerMat);
+    skirt2.position.y = -3.8;
+    gownGroup.add(skirt2);
+
+    // 4. Sheer Organza Scalloped Hem
+    const hemGeo = new THREE.TorusGeometry(4.4, 0.12, 16, 48);
+    const hem = new THREE.Mesh(hemGeo, goldMat);
+    hem.rotation.x = Math.PI / 2;
+    hem.position.y = -5.0;
+    gownGroup.add(hem);
+
+    // 5. Flowing Shoulder Dupatta / Cape
+    const capeGeo = new THREE.TorusGeometry(2.0, 0.3, 16, 32, Math.PI * 1.2);
+    const cape = new THREE.Mesh(capeGeo, sheerMat);
+    cape.rotation.z = -Math.PI / 4;
+    cape.position.set(-0.8, 1.2, 0.5);
+    gownGroup.add(cape);
+
+    scene.add(gownGroup);
+
+    // Floating Stardust Particles
     const pGeo = new THREE.BufferGeometry();
-    const pCount = 130;
-    const pos = new Float32Array(pCount * 3);
+    const pCount = 140;
+    const pPos = new Float32Array(pCount * 3);
     for(let i=0; i<pCount*3; i++) {
-      pos[i] = (Math.random() - 0.5) * 50;
+      pPos[i] = (Math.random() - 0.5) * 35;
     }
-    pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-    const pMat = new THREE.PointsMaterial({ size: 0.5, color: 0xcba6f7, transparent: true, opacity: 0.6 });
-    const pMesh = new THREE.Points(pGeo, pMat);
-    scene.add(pMesh);
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const pMat = new THREE.PointsMaterial({ size: 0.18, color: 0xF38BA8, transparent: true, opacity: 0.65 });
+    const particles = new THREE.Points(pGeo, pMat);
+    scene.add(particles);
 
-    camera.position.z = 25;
+    // Studio Lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    scene.add(ambientLight);
 
+    const spotLight = new THREE.SpotLight(0xF38BA8, 2.2);
+    spotLight.position.set(12, 18, 14);
+    spotLight.angle = 0.55;
+    spotLight.penumbra = 0.7;
+    scene.add(spotLight);
+
+    const fillLight = new THREE.PointLight(0xCBA6F7, 1.4, 40);
+    fillLight.position.set(-14, 10, -10);
+    scene.add(fillLight);
+
+    const rimLight = new THREE.DirectionalLight(0xE5C890, 1.2);
+    rimLight.position.set(0, -5, -15);
+    scene.add(rimLight);
+
+    // Animation Loop
     function animate() {
       requestAnimationFrame(animate);
-      mesh.rotation.y += 0.003;
-      mesh.rotation.z += 0.002;
-      pMesh.rotation.y -= 0.001;
+      controls.update();
+      particles.rotation.y += 0.0008;
       renderer.render(scene, camera);
     }
     animate();
 
-    const S4_CATALOG = {
-      1: { id: 1, title: "Pastel Peony Organza Saree", inr: 16500, usd: 200, img: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" },
-      2: { id: 2, title: "Champagne Raw Silk Lehenga", inr: 32000, usd: 385, img: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=800&q=80" },
-      3: { id: 3, title: "Lavender Tiered Anarkali Set", inr: 18500, usd: 225, img: "https://images.unsplash.com/photo-1596783074918-c84cb06531ca?auto=format&fit=crop&w=800&q=80" },
-      4: { id: 4, title: "Turquoise Foil Chanderi Suit", inr: 12800, usd: 155, img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" }
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Color Swatch Switcher
+    window.setMannequinColor = function(colorHex, label) {
+      gownMat.color.setHex(colorHex);
+      sheerMat.color.setHex(colorHex);
+      spotLight.color.setHex(colorHex);
+      particles.material.color.setHex(colorHex);
+      roseRingMat.color.setHex(colorHex);
+      document.getElementById('palette-label').textContent = label;
+
+      document.querySelectorAll('.swatch-btn').forEach(btn => {
+        btn.classList.remove('ring-2', 'ring-white');
+      });
+      event.target.classList.add('ring-2', 'ring-white');
     };
 
+    // Spin & Cam Buttons
+    const toggleSpinBtn = document.getElementById('toggle-spin');
+    const spinIcon = document.getElementById('spin-icon');
+    const spinText = document.getElementById('spin-text');
+    let isSpinning = true;
+
+    toggleSpinBtn.addEventListener('click', () => {
+      isSpinning = !isSpinning;
+      controls.autoRotate = isSpinning;
+      spinText.textContent = isSpinning ? "Pause Spin" : "Auto Spin";
+      spinIcon.setAttribute('data-lucide', isSpinning ? 'pause' : 'play');
+      lucide.createIcons();
+    });
+
+    document.getElementById('reset-cam').addEventListener('click', () => {
+      camera.position.set(0, 3, 22);
+      controls.target.set(0, 0, 0);
+      controls.update();
+    });
+
+    // -------------------------------------------------------------
+    // 3D CARD TILT WITH SPECULAR GLARE
+    // -------------------------------------------------------------
+    document.querySelectorAll('.card-3d-wrap').forEach(wrap => {
+      const card = wrap.querySelector('.card-3d');
+      wrap.addEventListener('mousemove', (e) => {
+        const rect = wrap.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+      wrap.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      });
+    });
+
+    // -------------------------------------------------------------
+    // CATALOG DATA & QUICK VIEW MODAL
+    // -------------------------------------------------------------
+    const S4_CATALOG = {
+      1: { id: 1, title: "Pastel Peony Organza Saree", cat: "Pure Sheer Silk Organza", inr: 16500, usd: 200, img: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80", desc: "Handpainted botanical brushstroke peonies with hand-cutdana scalloped borders and raw silk blouse piece." },
+      2: { id: 2, title: "Champagne Raw Silk Lehenga", cat: "Muted Gold Gota Work", inr: 32000, usd: 385, img: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=800&q=80", desc: "Voluminous lehenga skirt with hand-stitched rose gold gota borders, padded sweetheart blouse, and organza dupatta." },
+      3: { id: 3, title: "Lavender Tiered Anarkali Set", cat: "Georgette Flare", inr: 18500, usd: 225, img: "https://images.unsplash.com/photo-1596783074918-c84cb06531ca?auto=format&fit=crop&w=800&q=80", desc: "Floor-grazing tiered flare featuring mirror embroidery highlights, hand-tasseled dori, and light chiffon dupatta." },
+      4: { id: 4, title: "Turquoise Foil Chanderi Suit", cat: "Contemporary Chanderi", inr: 12800, usd: 155, img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80", desc: "Straight cut chanderi kurta with floral foil prints, paired with silk scallop cigarette pants and matching scarf." }
+    };
+
+    const qvModal = document.getElementById('quickview-modal');
+    const qvBackdrop = document.getElementById('quickview-backdrop');
+    const qvImg = document.getElementById('qv-img');
+    const qvTitle = document.getElementById('qv-title');
+    const qvTag = document.getElementById('qv-tag');
+    const qvDesc = document.getElementById('qv-desc');
+    const qvPrice = document.getElementById('qv-price');
+    const qvAddBtn = document.getElementById('qv-add-btn');
+
+    let currentQvId = null;
+
+    window.openQuickView = function(id) {
+      const p = S4_CATALOG[id];
+      if(!p) return;
+      currentQvId = id;
+      qvImg.src = p.img;
+      qvTitle.textContent = p.title;
+      qvTag.textContent = p.cat;
+      qvDesc.textContent = p.desc;
+      qvPrice.textContent = isUSD ? `$${p.usd}` : `₹${p.inr.toLocaleString()}`;
+      qvModal.classList.remove('opacity-0', 'pointer-events-none');
+      qvModal.classList.add('opacity-100');
+    };
+
+    window.closeQuickView = function() {
+      qvModal.classList.add('opacity-0', 'pointer-events-none');
+      qvModal.classList.remove('opacity-100');
+    };
+
+    qvBackdrop.addEventListener('click', closeQuickView);
+    qvAddBtn.addEventListener('click', () => {
+      if(currentQvId) addToCart(currentQvId);
+      closeQuickView();
+    });
+
+    // -------------------------------------------------------------
+    // CURRENCY SWITCHER & CART LOGIC
+    // -------------------------------------------------------------
     let isUSD = false;
     let cart = [];
     const currencyToggle = document.getElementById('currency-toggle');
@@ -479,22 +789,22 @@
     closeCartBtn.addEventListener('click', () => toggleCart(false));
     cartBackdrop.addEventListener('click', () => toggleCart(false));
 
-    function addToCart(id) {
+    window.addToCart = function(id) {
       const prod = S4_CATALOG[id];
       const existing = cart.find(i => i.id === id);
       if (existing) existing.qty += 1;
       else cart.push({ ...prod, qty: 1 });
       renderCart();
       toggleCart(true);
-    }
+    };
 
-    function changeQty(id, delta) {
+    window.changeQty = function(id, delta) {
       const item = cart.find(i => i.id === id);
       if (!item) return;
       item.qty += delta;
       if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
       renderCart();
-    }
+    };
 
     function renderCart() {
       cartCountBadge.textContent = cart.reduce((a, b) => a + b.qty, 0);
@@ -533,7 +843,7 @@
 
     whatsappCheckoutBtn.addEventListener('click', () => {
       if (cart.length === 0) return alert("Your bag is empty.");
-      let msg = "Hello S4 Boutique (MVP Colony, Vizag)! I would like to order:\n\n";
+      let msg = "Hello S4 Boutique (MVP Colony, Vizag)! I would like to order from your 3D Lookbook:\n\n";
       cart.forEach((i, idx) => {
         const pr = isUSD ? `$${i.usd * i.qty}` : `₹${(i.inr * i.qty).toLocaleString()}`;
         msg += `${idx + 1}. ${i.title} (Qty: ${i.qty}) - ${pr}\n`;
