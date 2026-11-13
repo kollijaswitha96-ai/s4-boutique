@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S4 Boutique | Contemporary Designer Ethnic & Festive Pret | MVP Colony, Vizag</title>
+  <meta name="description" content="S4 Boutique on MVP Double Road, beside Kotak Mahindra Bank, Sector 1, MVP Colony, Visakhapatnam. Handcrafted designer sarees, organza florals, and luxury festive wear." />
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            s4: {
+              black: '#08080A',
+              card: '#121217',
+              blush: '#F38BA8',
+              emerald: '#10B981',
+              lavender: '#CBA6F7',
+              rose: '#F43F5E',
+              gold: '#E5C890'
+            }
+          },
+          fontFamily: {
+            chic: ['"Italiana"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .chic-gradient {
+      background: linear-gradient(135deg, #F38BA8 0%, #CBA6F7 50%, #E5C890 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .glass-mvp {
+      background: rgba(18, 18, 23, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(243, 139, 168, 0.2);
+    }
+    .tilt-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      transform-style: preserve-3d;
+    }
+    .tilt-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 45px -10px rgba(243, 139, 168, 0.22);
+    }
+  </style>
+</head>
+<body class="bg-s4-black text-slate-100 font-sans selection:bg-s4-blush selection:text-black antialiased overflow-x-hidden min-h-screen flex flex-col justify-between">
+
+  <!-- TOP AGENCY BRANDING (HIVECLICKS.COM) -->
+  <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border-b border-pink-500/30 py-2.5 px-4 text-center text-xs text-slate-300 flex items-center justify-center flex-wrap gap-2 sticky top-0 z-[60]">
+    <div class="flex items-center space-x-2">
+      <img src="hiveclicks-logo.png" alt="HiveClicks Logo" class="h-5 w-auto object-contain rounded bg-white/10 p-0.5">
+      <span class="font-bold text-white tracking-wide">Designed & Powered by <a href="https://hiveclicks.com/" target="_blank" class="text-pink-400 underline hover:text-pink-300">HiveClicks</a></span>
+    </div>
+    <span class="hidden md:inline text-slate-500">•</span>
+    <span class="text-slate-400">Interactive Storefront Concept for <strong>S4 Boutique (MVP Colony, Vizag)</strong></span>
+    <a href="https://hiveclicks.com/" target="_blank" class="inline-flex items-center space-x-1 bg-pink-500 hover:bg-pink-400 text-slate-950 px-2.5 py-0.5 rounded-full font-bold text-[11px] transition">
+      <span>Visit HiveClicks.com</span>
+      <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+    </a>
+  </div>
+
+  <!-- PERFECT LUXURY HEADER -->
+  <header class="sticky top-10 z-50 glass-mvp border-b border-s4-blush/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <a href="index.html" class="flex items-center space-x-3 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-s4-blush to-s4-lavender flex items-center justify-center text-slate-950 font-chic font-bold text-2xl shadow-lg shadow-s4-blush/20 group-hover:scale-105 transition">
+          S4
+        </div>
+        <div>
+          <span class="font-chic text-2xl sm:text-3xl font-bold tracking-wider text-white block">S4<span class="text-s4-blush"> BOUTIQUE</span></span>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-slate-400 font-semibold block">MVP Double Rd • Sector 1</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center space-x-8 text-xs uppercase tracking-widest font-semibold text-slate-300">
+        <a href="index.html" class="text-s4-blush border-b-2 border-s4-blush pb-1">Home</a>
+        <a href="catalog.html" class="hover:text-s4-blush transition">Full Catalogue</a>
+        <a href="#studio" class="hover:text-s4-blush transition">MVP Colony Studio</a>
+        <a href="#reviews" class="hover:text-s4-blush transition">Reviews</a>
+      </nav>
+
+      <div class="flex items-center space-x-4">
+        <button id="currency-toggle" class="text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-s4-blush hover:border-s4-blush transition">
+          <span id="current-currency">INR (₹)</span>
+        </button>
+        <button id="cart-btn" class="relative p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white">
+          <i data-lucide="shopping-bag" class="w-5 h-5 text-s4-blush"></i>
+          <span id="cart-count-badge" class="absolute -top-1.5 -right-1.5 bg-s4-blush text-slate-950 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span>
+        </button>
+        <a href="catalog.html" class="hidden sm:inline-flex items-center space-x-2 bg-gradient-to-r from-s4-blush to-s4-lavender text-slate-950 font-bold px-4 py-2 rounded-full text-xs uppercase tracking-wider transition shadow-lg shadow-s4-blush/20">
+          <span>Shop Lookbook</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- 3D INTERACTIVE CRYSTAL PRISM HERO -->
+  <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-24">
+    <div id="three-crystal-container" class="absolute inset-0 w-full h-full pointer-events-none z-0"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-mvp border border-s4-blush/30 text-xs text-s4-blush font-medium mb-6">
+        <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+        <span>MVP Double Rd, Beside Kotak Mahindra Bank, Sector 1, Vizag</span>
+      </div>
+
+      <h1 class="font-chic text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
+        Modern Festive Elegance & <br class="hidden sm:inline">
+        <span class="chic-gradient">Contemporary Designer Silhouettes</span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-slate-300 text-sm sm:text-base font-light leading-relaxed mb-10">
+        MVP Colony’s premier boutique for organza handpainted florals, light bridal lehengas, fusion ready-to-wear kurtis, and bespoke event styling.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+        <a href="catalog.html" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-s4-blush to-s4-lavender text-slate-950 font-bold px-8 py-4 rounded-full text-xs uppercase tracking-widest shadow-2xl shadow-s4-blush/25 transition transform hover:-translate-y-1">
+          <span>Explore Full Catalogue</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+        <a href="#studio" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 glass-mvp hover:bg-slate-800 text-slate-200 border border-s4-blush/40 font-semibold px-8 py-4 rounded-full text-xs uppercase tracking-widest transition">
+          <i data-lucide="map-pin" class="w-4 h-4 text-s4-blush"></i>
+          <span>Visit MVP Studio</span>
+        </a>
+      </div>
+
+      <!-- Highlights Bar -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-20 pt-8 border-t border-white/10 text-center">
+        <div>
+          <p class="font-chic text-3xl font-bold text-s4-blush">MVP</p>
+          <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">Prime Double Road</p>
+        </div>
+        <div>
+          <p class="font-chic text-3xl font-bold text-white">Handpainted</p>
+          <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">Pure Organza Silks</p>
+        </div>
+        <div>
+          <p class="font-chic text-3xl font-bold text-s4-lavender">Bespoke</p>
+          <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">Custom Alterations</p>
+        </div>
+        <div>
+          <p class="font-chic text-3xl font-bold text-white">Global</p>
+          <p class="text-[11px] uppercase tracking-wider text-slate-400 mt-1">NRI Express Delivery</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOME CATALOGUE PREVIEW & SEE MORE BUTTON -->
+  <section class="py-24 relative bg-s4-card/50 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <span class="text-s4-blush uppercase tracking-widest text-xs font-bold block mb-2">Curated Edit</span>
+          <h2 class="font-chic text-3xl sm:text-5xl font-bold text-white">The MVP Collection</h2>
+        </div>
+        <a href="catalog.html" class="inline-flex items-center space-x-2 text-s4-blush hover:text-white font-bold text-xs uppercase tracking-wider mt-4 md:mt-0 transition group">
+          <span>View All 12+ Designs</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Item 1 -->
+        <div class="tilt-card group bg-s4-card rounded-2xl border border-white/10 overflow-hidden flex flex-col">
+          <div class="relative h-96 overflow-hidden bg-slate-900">
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" alt="Pastel Peony Handpainted Organza Saree" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <span class="absolute top-3 left-3 bg-s4-blush text-slate-950 text-[10px] font-bold uppercase px-2.5 py-1 rounded-md tracking-wider">Handpainted</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <p class="text-[10px] text-s4-blush uppercase tracking-widest font-semibold mb-1">Pure Sheer Silk Organza</p>
+              <h3 class="font-chic text-lg font-bold text-white group-hover:text-s4-blush transition">Pastel Peony Organza Saree</h3>
+              <p class="text-xs text-slate-400 mt-1 line-clamp-2">Botanical brushstroke floral motifs with delicate hand-embroidered cutdana scallop borders.</p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+              <span class="text-base font-bold text-s4-blush price-tag" data-inr="16500" data-usd="200">₹16,500</span>
+              <button onclick="addToCart(1)" class="bg-s4-blush hover:bg-white text-slate-950 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1 shadow-md">
+                <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+                <span>Add</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="tilt-card group bg-s4-card rounded-2xl border border-white/10 overflow-hidden flex flex-col">
+          <div class="relative h-96 overflow-hidden bg-slate-900">
+            <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=800&q=80" alt="Champagne Raw Silk Festive Lehenga" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <span class="absolute top-3 left-3 bg-amber-500 text-slate-950 text-[10px] font-bold uppercase px-2.5 py-1 rounded-md tracking-wider">Festive Luxe</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <p class="text-[10px] text-amber-400 uppercase tracking-widest font-semibold mb-1">Muted Gold Gota Work</p>
+              <h3 class="font-chic text-lg font-bold text-white group-hover:text-amber-400 transition">Champagne Raw Silk Lehenga</h3>
+              <p class="text-xs text-slate-400 mt-1 line-clamp-2">Flared lehenga skirt with rose gold geometric gota borders and padded sweetheart blouse.</p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+              <span class="text-base font-bold text-white price-tag" data-inr="32000" data-usd="385">₹32,000</span>
+              <button onclick="addToCart(2)" class="bg-s4-blush hover:bg-white text-slate-950 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1 shadow-md">
+                <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+                <span>Add</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="tilt-card group bg-s4-card rounded-2xl border border-white/10 overflow-hidden flex flex-col">
+          <div class="relative h-96 overflow-hidden bg-slate-900">
+            <img src="https://images.unsplash.com/photo-1596783074918-c84cb06531ca?auto=format&fit=crop&w=800&q=80" alt="Lavender Georgette Tiered Anarkali" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <span class="absolute top-3 left-3 bg-s4-lavender text-slate-950 text-[10px] font-bold uppercase px-2.5 py-1 rounded-md tracking-wider">Flared Silhouette</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <p class="text-[10px] text-s4-lavender uppercase tracking-widest font-semibold mb-1">Tiered Flare</p>
+              <h3 class="font-chic text-lg font-bold text-white group-hover:text-s4-lavender transition">Lavender Tiered Anarkali Set</h3>
+              <p class="text-xs text-slate-400 mt-1 line-clamp-2">Flowing silhouette with subtle mirror accents, organza dupatta, and matching cigarette pants.</p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+              <span class="text-base font-bold text-s4-lavender price-tag" data-inr="18500" data-usd="225">₹18,500</span>
+              <button onclick="addToCart(3)" class="bg-s4-blush hover:bg-white text-slate-950 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1 shadow-md">
+                <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+                <span>Add</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="tilt-card group bg-s4-card rounded-2xl border border-white/10 overflow-hidden flex flex-col">
+          <div class="relative h-96 overflow-hidden bg-slate-900">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Turquoise Printed Chanderi Kurta Set" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <span class="absolute top-3 left-3 bg-teal-500 text-slate-950 text-[10px] font-bold uppercase px-2.5 py-1 rounded-md tracking-wider">Ready To Wear</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <p class="text-[10px] text-teal-400 uppercase tracking-widest font-semibold mb-1">Chanderi Silk</p>
+              <h3 class="font-chic text-lg font-bold text-white group-hover:text-teal-400 transition">Turquoise Foil Chanderi Suit</h3>
+              <p class="text-xs text-slate-400 mt-1 line-clamp-2">Straight-cut designer kurta with handcrafted thread buttons and scallop culottes.</p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+              <span class="text-base font-bold text-teal-400 price-tag" data-inr="12800" data-usd="155">₹12,800</span>
+              <button onclick="addToCart(4)" class="bg-s4-blush hover:bg-white text-slate-950 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1 shadow-md">
+                <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+                <span>Add</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SEE MORE BUTTON REDIRECTING TO FULL CATALOGUE -->
+      <div class="mt-14 text-center">
+        <a href="catalog.html" class="inline-flex items-center space-x-3 bg-gradient-to-r from-s4-blush via-s4-lavender to-s4-gold text-slate-950 font-bold px-10 py-4 rounded-full text-xs uppercase tracking-widest shadow-2xl shadow-s4-blush/25 transition transform hover:-translate-y-1 group">
+          <span>See More / View Complete Catalogue (12+ Designs)</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+        <p class="text-xs text-slate-400 mt-2">Organza Florals • Raw Silk Lehengas • Tiered Anarkalis • Ready-To-Wear Kurtis</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STUDIO LOCATION (MVP COLONY, SECTOR 1) -->
+  <section id="studio" class="py-20 bg-s4-black border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      
+      <div class="lg:col-span-5 space-y-6">
+        <span class="text-s4-blush uppercase tracking-widest text-xs font-bold">Studio Visit</span>
+        <h2 class="font-chic text-3xl sm:text-4xl font-bold text-white">S4 Boutique MVP Colony</h2>
+        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+          Situated on MVP Double Road right beside Kotak Mahindra Bank in Sector 1. Visit us for ready-to-wear trials and custom tailoring.
+        </p>
+
+        <div class="space-y-4 text-xs text-slate-300">
+          <div class="flex items-start space-x-3">
+            <i data-lucide="map-pin" class="w-5 h-5 text-s4-blush mt-0.5"></i>
+            <div>
+              <p class="font-bold text-white">Location</p>
+              <p class="text-slate-400">1-83-41, MVP Double Rd, beside Kotak Mahindra Bank, Sector 1, MVP Colony, Visakhapatnam 530017</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <i data-lucide="clock" class="w-5 h-5 text-s4-blush mt-0.5"></i>
+            <div>
+              <p class="font-bold text-white">Hours</p>
+              <p class="text-slate-400">Monday - Saturday: 10:30 AM - 9:00 PM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <a href="https://maps.app.goo.gl/RYBpauDQCer4goyc6?g_st=ac" target="_blank" class="inline-flex items-center space-x-2 bg-slate-900 border border-s4-blush/40 text-s4-blush px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition hover:bg-slate-800">
+            <i data-lucide="navigation" class="w-4 h-4"></i>
+            <span>Open in Google Maps</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 bg-s4-card p-3 rounded-2xl border border-white/10 shadow-2xl">
+        <div class="w-full h-80 rounded-xl overflow-hidden">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3799.6!2d83.330!3d17.740!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39434d2756169b%3A0x47f4be2aed933988!2sS4%20Boutique!5e0!3m2!1sen!2sin!4v1700000000000" 
+            width="100%" 
+            height="100%" 
+            style="border:0; filter: invert(90%) hue-rotate(180deg);" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-s4-card border-t border-white/10 py-12 text-slate-400 text-xs mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; <span id="year"></span> S4 Boutique. MVP Colony, Visakhapatnam.</p>
+      <p class="flex items-center space-x-1.5">
+        <img src="hiveclicks-logo.png" alt="HiveClicks Logo" class="h-4 w-auto object-contain rounded bg-white/10 p-0.5">
+        <span>Engineered & Marketed by</span>
+        <a href="https://hiveclicks.com/" target="_blank" class="text-pink-400 font-bold hover:underline">HiveClicks</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- FLOATING HIVECLICKS BADGE -->
+  <div class="fixed bottom-6 left-6 z-40">
+    <a href="https://hiveclicks.com/" target="_blank" class="glass-mvp hover:bg-slate-900 border border-s4-blush/40 text-white px-3.5 py-2 rounded-full shadow-2xl flex items-center space-x-2 transition transform hover:scale-105 group">
+      <img src="hiveclicks-logo.png" alt="HiveClicks Logo" class="h-5 w-auto object-contain rounded bg-white/10 p-0.5">
+      <span class="text-[11px] font-bold text-slate-300 group-hover:text-s4-blush">Designed by <strong class="text-pink-400">HiveClicks</strong></span>
+      <i data-lucide="external-link" class="w-3 h-3 text-slate-400 group-hover:text-s4-blush"></i>
+    </a>
+  </div>
+
+  <!-- SLIDE-OVER CART DRAWER -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 pointer-events-none transition duration-500 opacity-0">
+    <div id="cart-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition"></div>
+    <div class="absolute top-0 right-0 h-full w-full max-w-md bg-s4-card border-l border-s4-blush/30 p-6 flex flex-col justify-between shadow-2xl transform translate-x-full transition duration-500 pointer-events-auto" id="cart-panel">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-white/10">
+          <div class="flex items-center space-x-2">
+            <i data-lucide="shopping-bag" class="w-5 h-5 text-s4-blush"></i>
+            <h3 class="font-chic text-lg font-bold text-white">Your Selections</h3>
+          </div>
+          <button id="close-cart-btn" class="p-2 text-slate-400 hover:text-white transition">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+        <div id="cart-items-container" class="py-6 space-y-4 max-h-[55vh] overflow-y-auto pr-1"></div>
+      </div>
+      <div class="border-t border-white/10 pt-4 space-y-4">
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-400 font-medium">Subtotal:</span>
+          <span class="font-bold text-lg text-s4-blush" id="cart-subtotal">₹0</span>
+        </div>
+        <button id="whatsapp-checkout-btn" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center space-x-2 shadow-lg shadow-emerald-600/30 transition">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          <span>Order via WhatsApp & Fitting Details</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // THREE.JS 3D CRYSTAL PRISM PARTICLES
+    const container = document.getElementById('three-crystal-container');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+
+    const geo = new THREE.OctahedronGeometry(11, 2);
+    const mat = new THREE.MeshBasicMaterial({ color: 0xf38ba8, wireframe: true, transparent: true, opacity: 0.16 });
+    const mesh = new THREE.Mesh(geo, mat);
+    scene.add(mesh);
+
+    const pGeo = new THREE.BufferGeometry();
+    const pCount = 130;
+    const pos = new Float32Array(pCount * 3);
+    for(let i=0; i<pCount*3; i++) {
+      pos[i] = (Math.random() - 0.5) * 50;
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const pMat = new THREE.PointsMaterial({ size: 0.5, color: 0xcba6f7, transparent: true, opacity: 0.6 });
+    const pMesh = new THREE.Points(pGeo, pMat);
+    scene.add(pMesh);
+
+    camera.position.z = 25;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      mesh.rotation.y += 0.003;
+      mesh.rotation.z += 0.002;
+      pMesh.rotation.y -= 0.001;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    const S4_CATALOG = {
+      1: { id: 1, title: "Pastel Peony Organza Saree", inr: 16500, usd: 200, img: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" },
+      2: { id: 2, title: "Champagne Raw Silk Lehenga", inr: 32000, usd: 385, img: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=800&q=80" },
+      3: { id: 3, title: "Lavender Tiered Anarkali Set", inr: 18500, usd: 225, img: "https://images.unsplash.com/photo-1596783074918-c84cb06531ca?auto=format&fit=crop&w=800&q=80" },
+      4: { id: 4, title: "Turquoise Foil Chanderi Suit", inr: 12800, usd: 155, img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" }
+    };
+
+    let isUSD = false;
+    let cart = [];
+    const currencyToggle = document.getElementById('currency-toggle');
+    const currentCurrency = document.getElementById('current-currency');
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartPanel = document.getElementById('cart-panel');
+    const cartBackdrop = document.getElementById('cart-backdrop');
+    const cartBtn = document.getElementById('cart-btn');
+    const closeCartBtn = document.getElementById('close-cart-btn');
+    const cartCountBadge = document.getElementById('cart-count-badge');
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const cartSubtotal = document.getElementById('cart-subtotal');
+    const whatsappCheckoutBtn = document.getElementById('whatsapp-checkout-btn');
+
+    currencyToggle.addEventListener('click', () => {
+      isUSD = !isUSD;
+      currentCurrency.textContent = isUSD ? "USD ($)" : "INR (₹)";
+      document.querySelectorAll('.price-tag').forEach(el => {
+        const inr = parseInt(el.getAttribute('data-inr'));
+        const usd = parseInt(el.getAttribute('data-usd'));
+        el.textContent = isUSD ? `$${usd.toLocaleString()}` : `₹${inr.toLocaleString()}`;
+      });
+      renderCart();
+    });
+
+    function toggleCart(show) {
+      if (show) {
+        cartDrawer.classList.remove('opacity-0', 'pointer-events-none');
+        cartDrawer.classList.add('opacity-100');
+        cartPanel.classList.remove('translate-x-full');
+      } else {
+        cartDrawer.classList.add('opacity-0', 'pointer-events-none');
+        cartDrawer.classList.remove('opacity-100');
+        cartPanel.classList.add('translate-x-full');
+      }
+    }
+
+    cartBtn.addEventListener('click', () => toggleCart(true));
+    closeCartBtn.addEventListener('click', () => toggleCart(false));
+    cartBackdrop.addEventListener('click', () => toggleCart(false));
+
+    function addToCart(id) {
+      const prod = S4_CATALOG[id];
+      const existing = cart.find(i => i.id === id);
+      if (existing) existing.qty += 1;
+      else cart.push({ ...prod, qty: 1 });
+      renderCart();
+      toggleCart(true);
+    }
+
+    function changeQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+      renderCart();
+    }
+
+    function renderCart() {
+      cartCountBadge.textContent = cart.reduce((a, b) => a + b.qty, 0);
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p class="text-center text-slate-500 py-10">Your bag is empty.</p>';
+        cartSubtotal.textContent = isUSD ? "$0" : "₹0";
+        return;
+      }
+      let subtotalINR = 0;
+      let subtotalUSD = 0;
+      let html = '';
+      cart.forEach(item => {
+        subtotalINR += item.inr * item.qty;
+        subtotalUSD += item.usd * item.qty;
+        const pr = isUSD ? `$${(item.usd * item.qty).toLocaleString()}` : `₹${(item.inr * item.qty).toLocaleString()}`;
+        html += `
+          <div class="flex items-center space-x-3 bg-slate-900/60 p-3 rounded-xl border border-white/10">
+            <img src="${item.img}" class="w-16 h-20 object-cover rounded-lg">
+            <div class="flex-1">
+              <h4 class="font-chic text-xs font-bold text-white">${item.title}</h4>
+              <div class="flex items-center justify-between mt-2">
+                <div class="flex items-center space-x-2 bg-slate-950 px-2 py-1 rounded-md border border-slate-800 text-xs">
+                  <button onclick="changeQty(${item.id}, -1)">-</button>
+                  <span class="font-bold text-white px-1">${item.qty}</span>
+                  <button onclick="changeQty(${item.id}, 1)">+</button>
+                </div>
+                <span class="text-xs font-bold text-s4-blush">${pr}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      cartItemsContainer.innerHTML = html;
+      cartSubtotal.textContent = isUSD ? `$${subtotalUSD.toLocaleString()}` : `₹${subtotalINR.toLocaleString()}`;
+    }
+
+    whatsappCheckoutBtn.addEventListener('click', () => {
+      if (cart.length === 0) return alert("Your bag is empty.");
+      let msg = "Hello S4 Boutique (MVP Colony, Vizag)! I would like to order:\n\n";
+      cart.forEach((i, idx) => {
+        const pr = isUSD ? `$${i.usd * i.qty}` : `₹${(i.inr * i.qty).toLocaleString()}`;
+        msg += `${idx + 1}. ${i.title} (Qty: ${i.qty}) - ${pr}\n`;
+      });
+      msg += `\nSubtotal: ${cartSubtotal.textContent}\nPlease share delivery and size options.`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+    });
+  </script>
+</body>
+</html>
