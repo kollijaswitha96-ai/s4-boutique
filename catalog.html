@@ -46,10 +46,11 @@
       border: 1px solid rgba(243, 139, 168, 0.2);
     }
     .tilt-card {
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      transition: transform 0.3s ease-out, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
     }
     .tilt-card:hover {
-      transform: translateY(-8px) scale(1.02);
       box-shadow: 0 20px 45px -10px rgba(243, 139, 168, 0.22);
     }
   </style>
@@ -63,7 +64,7 @@
       <span class="font-bold text-white tracking-wide">Designed & Powered by <a href="https://hiveclicks.com/" target="_blank" class="text-pink-400 underline hover:text-pink-300">HiveClicks</a></span>
     </div>
     <span class="hidden md:inline text-slate-500">•</span>
-    <span class="text-slate-400">Complete Lookbook for <strong>S4 Boutique</strong></span>
+    <span class="text-slate-400">Complete Lookbook for <strong>S4 Boutique (MVP Colony, Vizag)</strong></span>
     <a href="https://hiveclicks.com/" target="_blank" class="inline-flex items-center space-x-1 bg-pink-500 hover:bg-pink-400 text-slate-950 px-2.5 py-0.5 rounded-full font-bold text-[11px] transition">
       <span>Visit HiveClicks.com</span>
       <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
@@ -84,7 +85,7 @@
       </a>
 
       <nav class="hidden md:flex items-center space-x-8 text-xs uppercase tracking-widest font-semibold text-slate-300">
-        <a href="index.html" class="hover:text-s4-blush transition">Home</a>
+        <a href="index.html" class="hover:text-s4-blush transition">3D Atelier</a>
         <a href="catalog.html" class="text-s4-blush border-b-2 border-s4-blush pb-1">Full Catalogue</a>
         <a href="index.html#studio" class="hover:text-s4-blush transition">MVP Colony Studio</a>
       </nav>
@@ -106,12 +107,12 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
         <div>
-          <span class="text-s4-blush uppercase tracking-widest text-xs font-bold">Contemporary Edit</span>
-          <h1 class="font-chic text-3xl sm:text-5xl font-bold text-white">Full Collection Portfolio</h1>
+          <span class="text-s4-blush uppercase tracking-widest text-xs font-bold">Contemporary Couture</span>
+          <h1 class="font-chic text-3xl sm:text-5xl font-bold text-white">Complete Lookbook</h1>
         </div>
         <div class="relative w-full md:w-80">
           <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
-          <input type="text" id="cat-search" placeholder="Search florals, kurtis, lehengas..." class="w-full bg-s4-card border border-white/10 rounded-full pl-10 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-s4-blush">
+          <input type="text" id="cat-search" placeholder="Search organza, lehenga, kurti..." class="w-full bg-s4-card border border-white/20 rounded-full pl-10 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-s4-blush">
         </div>
       </div>
 
@@ -120,7 +121,7 @@
         <button class="cat-filter bg-slate-900 border border-white/10 text-slate-400 hover:text-white px-4 py-2 rounded-full text-xs uppercase tracking-wider" data-cat="organza">Organza Sarees</button>
         <button class="cat-filter bg-slate-900 border border-white/10 text-slate-400 hover:text-white px-4 py-2 rounded-full text-xs uppercase tracking-wider" data-cat="lehenga">Festive Lehengas</button>
         <button class="cat-filter bg-slate-900 border border-white/10 text-slate-400 hover:text-white px-4 py-2 rounded-full text-xs uppercase tracking-wider" data-cat="anarkali">Tiered Anarkalis</button>
-        <button class="cat-filter bg-slate-900 border border-white/10 text-slate-400 hover:text-white px-4 py-2 rounded-full text-xs uppercase tracking-wider" data-cat="kurti">Designer Suits</button>
+        <button class="cat-filter bg-slate-900 border border-white/10 text-slate-400 hover:text-white px-4 py-2 rounded-full text-xs uppercase tracking-wider" data-cat="kurti">Pret Kurtis</button>
       </div>
     </div>
   </section>
@@ -133,7 +134,7 @@
   <!-- FOOTER -->
   <footer class="bg-s4-card border-t border-white/10 py-12 text-slate-400 text-xs mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p>&copy; S4 Boutique. MVP Colony, Visakhapatnam.</p>
+      <p>&copy; S4 Boutique. MVP Double Road, Sector 1, Visakhapatnam.</p>
       <p class="flex items-center space-x-1.5">
         <img src="hiveclicks-logo.png" alt="HiveClicks Logo" class="h-4 w-auto object-contain rounded bg-white/10 p-0.5">
         <span>Engineered & Marketed by</span>
@@ -159,7 +160,7 @@
         <div class="flex items-center justify-between pb-4 border-b border-white/10">
           <div class="flex items-center space-x-2">
             <i data-lucide="shopping-bag" class="w-5 h-5 text-s4-blush"></i>
-            <h3 class="font-chic text-lg font-bold text-white">Your Selections</h3>
+            <h3 class="font-chic text-xl font-bold text-white">Your Selections</h3>
           </div>
           <button id="close-cart-btn" class="p-2 text-slate-400 hover:text-white transition">
             <i data-lucide="x" class="w-5 h-5"></i>
@@ -174,7 +175,7 @@
         </div>
         <button id="whatsapp-checkout-btn" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center space-x-2 shadow-lg shadow-emerald-600/30 transition">
           <i data-lucide="message-circle" class="w-5 h-5"></i>
-          <span>Order via WhatsApp & Fitting Details</span>
+          <span>Order via WhatsApp & Custom Measurements</span>
         </button>
       </div>
     </div>
@@ -253,6 +254,25 @@
       });
       grid.innerHTML = html;
       lucide.createIcons();
+      attachTilt();
+    }
+
+    function attachTilt() {
+      document.querySelectorAll('.tilt-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -8;
+          const rotateY = ((x - centerX) / centerX) * 8;
+          card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px) scale3d(1.02, 1.02, 1.02)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0) scale3d(1, 1, 1)';
+        });
+      });
     }
 
     searchInput.addEventListener('input', (e) => {
